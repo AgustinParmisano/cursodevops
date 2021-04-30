@@ -1,0 +1,68 @@
+   62  cat data10.csv | awk -F"|" '{ print $1","$2","$4}'
+   63  cat data10.csv | awk -F"|" '{ print $1","$2","$4}' > mails10.csv
+   64  cat data10.csv | awk -F"|" '{ print $1","$2","$4}' 
+   69  cat data10.csv | awk -F"|" '{ print $1","$2","$4}' 
+   70  cat data100.csv | awk -F"|" '{ print $1","$2","$4}' 
+   73  cat data10.csv | awk -F"|" '{ print $4 }'
+   74  cat data10.csv | awk -F"|" '{ print $4 }' > solo_mails10.txt
+  100  cat data10.csv | awk -F"|" '{ print $1","$2 }'
+  102  cat data10.csv | awk -F"|" '{ print $1","$2 }'
+  103  cat data10.csv | awk -F"|" '{ print $2","$4 }'
+  104  cat data10.csv | awk -F"|" '{ print $2","$4 }' | grep "z"
+  105  cat data10.csv | awk -F"|" '{ print $2","$4 }' | grep "F"
+  106  cat data10.csv | awk -F"|" '{ print $2","$4 }' | grep "o"
+  107  cat data10.csv | awk -F"|" '$2 ~ "o" { print $2","$4 }'
+  108  cat data10.csv | awk -F"|" '$2 ~ "o" { print $4","$6 }'
+  109  cat data10.csv | awk -F"|" '$2 ~ "o" { print $4","$5 }'
+  110  cat data10.csv | awk -F"|" '$5 ~ "8" { print $4","$5 }'
+  111  cat data10.csv | awk -F"|" '$5 ~ "*8" { print $4","$5 }'
+  112  cat data10.csv | awk -F"|" '$5 = "*8" { print $4","$5 }'
+  113  cat data10.csv | awk -F"|" '$5 == "*8" { print $4","$5 }'
+  114  cat data10.csv | awk -F"|" '$5 ~ "\8" { print $4","$5 }'
+  115  cat data10.csv | awk -F"|" '$5 ~ "8$" { print $4","$5 }'
+  117  cat data10.csv | awk -F"|" '$5 ~ "0$" { print $4","$5 }'
+  118  cat data10.csv | awk -F"|" '$5 ~ "60$" { print $4","$5 }'
+  119  cat data10.csv | awk -F"|" '$5 ~ "760$" { print $4","$5 }'
+  120  cat data10.csv | awk -F"|" '$5 ~ "^8" { print $4","$5 }'
+  121  cat data10.csv | awk -F"|" '$5 ~ "^16" { print $4","$5 }'
+  122  cat data10.csv | awk -F"|" '$5 ~ "^160" { print $4","$5 }'
+  123  cat data10.csv | awk -F"|" '$5 ~ "160^" { print $4","$5 }'
+  124  cat data10.csv | awk -F"|" '$5 ~ "^160" { print $4","$5 }'
+  125  cat data10.csv | awk -F"|" '$5 ~ "^8" { print $4","$5 }'
+  126  cat data10.csv | awk -F"|" '{ print $2","$4 }' | grep "z"
+  127  cat data10.csv | awk -F"|" '$2 ~ "z" { print $2","$4 }'
+  128  cat data100.csv | awk -F"|" '$2 ~ "z" { print $2","$4 }'
+  129  cat data10.csv | awk -F"|" '$5 ~ "8$" { print $4","$5 }'
+  130  cat data100.csv | awk -F"|" '$5 ~ "8$" { print $4","$5 }'
+  131  cat data100.csv | awk -F"|" '{ print $4","$5 }'
+  132  cat data10.csv | awk -F"|" '{ print $4","$5 }'
+  133  cat data10.csv | awk -F"|" '$2 ~ "W" { print $2","$4","$5 }'
+  134  cat data10.csv | awk -F"|" '$2 == "Warren" { print $2","$4","$5 }'
+  135  cat data10.csv | awk -F"|" '$2 == "Warren" { print $0 }'
+  136  cat data10.csv | awk -F"|" '$2 ~ "o" { print $0 }'
+  137  cat data10.csv | awk -F"|" '$2 ~ "o" { print $2","$4 }'
+  138  cat data10.csv | awk -F"|" '$5 ~ "8$" { print $4","$5 }'
+  141  cat data10.csv | awk -F"|" '$2 ~ "el$" { print $4","$5 }'
+  142  cat data10.csv | awk -F"|" '$1 ~ "el$" { print $0 }'
+  143  cat data10.csv | awk -F"|" '$1 ~ "el$" { print $4","$5 }'
+  149  cat data10.csv | awk -F"|" '$1 < len($1) { print $4","$5 }'
+  150  cat data10.csv | awk -F"|" '$1 < lenght($1) { print $4","$5 }'
+  151  cat data10.csv | awk -F"|" '$1 < lengt(h$1) { print $4","$5 }'
+  152  cat data10.csv | awk -F"|" '$1 < length($1) { print $4","$5 }'
+  153  cat data10.csv | awk -F"|" 'length($1) == 4' { print $4","$5 }'
+  154  cat data10.csv | awk -F"|" 'length($1) == 4 { print $4","$5 }'
+  155  cat data10.csv | awk -F"|" 'length($1) == 4 { print $1","$4","$5 }'
+  156  cat data10.csv | awk -F"|" 'length($1) <= 4 { print $1","$4","$5 }'
+  157  cat data10.csv | awk -F"|" 'length($1) <= 6 { print $1","$4","$5 }'
+  158  cat data10.csv | awk -F"|" '{ print $1"_"$2}'
+  159  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo 
+  160  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo "este es el dato "
+  161  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo "este es el dato $"
+  162  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo 
+  163  cat data10.csv | awk -F"|" '{ print $1"_"$2}'
+  170  cat data10.csv | awk -F"|" '{ print $1"_"$2}'
+  171  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo
+  172  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs mkdir
+  174  cat data10.csv | awk -F"|" '{ print $1"_"$2}' | xargs echo "c. Para cada carpeta generado en el punto 1.b. cree un archivo adentro de la misma con el formato nombre_apellido_p1.md.
+  175  history | grep awk
+  176  history | grep awk > history_awk.txt
