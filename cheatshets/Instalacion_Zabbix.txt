@@ -1,0 +1,110 @@
+Instalar Zabbix 5.0 en Ubuntu 20.04 LTS
+
+1 - Descargar e instalar Ubuntu 20.04 en una maquina virtual
+
+	https://ubuntu.com/download/desktop
+	https://www.virtualbox.org/
+
+
+2 - Convertirse en Root
+
+	sudo -i
+
+
+3 - Instalar los repositorios necesarios: apache2 y php
+
+	apt install apache2 php libapache2-mod-php
+
+
+4.a - Instalar el repositorio de Zabbix
+
+	wget https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+focal_all.deb
+	
+	dpkg -i zabbix-release_5.0-1+focal_all.deb
+
+	apt update
+
+
+4.b - Instalar el servidor, la interfaz y el agente de Zabbix
+
+	apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+
+
+5.a - Instalar mysql server
+
+	apt install mysql-server
+
+
+5.b - Crear una base de datos en mysql
+
+	mysql -uroot -p
+
+	create database zabbix character set utf8 collate utf8_bin;
+
+	create user zabbix@localhost identified by 'password';   ## Cambiar 'password' por la contraseña que quieras ## 
+
+	grant all privileges on zabbix.* to zabbix@localhost;
+
+	quit;
+
+
+6 - Importar el esquema y datos iniciales al servidor Zabbix
+
+	zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql zabbix
+
+
+7.a - Editar el archivo "zabbix_server.config"
+
+	cd /etc/zabbix
+
+	nano zabbix_server.conf
+
+
+7.b - Dentro del archivo, editar las siguientes lineas:
+
+	- Borrar # en "# DBhost=localhost"
+	- Cambiar "DBName=zabbix" por "DBName=zabbixdb"
+	- Borrar # en "# DBPassword=" y agregar al final de la linea el password creado en el paso 5.b
+
+	- cerrar nano y guardar los cambios
+
+
+8.a - Editar el archivo "apache.conf"
+
+	cd /etc/zabbix
+
+	nano apache.conf
+
+
+8.b - Dentro del archivo, editar la siguiente linea:
+
+	- Borrar # en "# php_value date.timezone Europe/Riga" y configurar la zona horaria adecuada.
+
+	- cerrar nano y guardar los cambios
+
+
+9 - Iniciar los procesos del agente y del servidor Zabbix
+
+	systemctl restart zabbix-server zabbix-agent apache2
+
+	systemctl enable zabbix-server zabbix-agent apache2
+
+	systemctl start zabbix-server zabbix-agent apache2
+
+
+10 - Conocer tu ip local:
+
+	apt install net-tools
+
+	ifconfig
+
+	- ## Buscar el primer "inet". A continuacion se encuentra tu ip local ##
+
+
+11 - Abrir Zabbix en tu navegador
+
+	- Introducir "http://ip_local/zabbix" en tu navegador. Cambiar "ip_local" por tu ip.
+
+	- Configurar Zabbix con el user y la contraseña creadas en el paso 5.b
+
+	- Loguearse en Zabbix con el user "Admin" y contraseña "zabbix"
