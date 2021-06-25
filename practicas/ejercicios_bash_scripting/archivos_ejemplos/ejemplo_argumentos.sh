@@ -10,4 +10,3 @@ for i in $*
 do
 	echo "Estamos en el argumento $i"
 done
-echo "Resultado del Status Code o Status Error $?"
